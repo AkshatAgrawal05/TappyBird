@@ -6,17 +6,21 @@ public class PipeCollector : MonoBehaviour
 {
 
     private GameObject[] pipeHolders;
-    private float distance = 3.5f;
+    private float distance = 4.5f;
     private float lastPipesX;
-    private float pipeMin = -1.3f;
-    private float pipeMax = 2.4f;
+    private float pipeMin = 1.5f;
+    private float pipeMax = 5.3f;
 
     private void Awake() {
         pipeHolders = GameObject.FindGameObjectsWithTag("PipeHolder");
 
         for (int i = 0; i < pipeHolders.Length; i++) {
             Vector3 temp = pipeHolders[i].transform.position;
-            temp.y = Random.Range(pipeMin, pipeMax);
+            Debug.Log("temp-->"+temp.ToString());
+            float range = Random.Range(pipeMin, pipeMax);
+            Debug.Log("range-->" + range);
+            temp.y = range;
+            Debug.Log("temp Y-->" + temp.ToString());
             pipeHolders[i].transform.position = temp;
         }
 
